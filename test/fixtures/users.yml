@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  salary: 1
+  total_amt: 1
+
+two:
+  name: MyString
+  salary: 1
+  total_amt: 1

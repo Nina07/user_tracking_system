@@ -1,0 +1,23 @@
+
+<br>
+<center><h1><u>Welcome to User Investment Tracking System</u></h1><center>
+<br>
+<p><h3>This website is about keeping track of user's financial transactions. We provide a suitable view of every user, allowing them to have control over what is their profiles. Every user has various details like his salary, his investment records etc. </h3></p>
+
+<fieldset>
+  <%= form_tag(:action=>'login') do %>
+<h2>Members Login</h2>
+<%= label_tag(:name,    "Name:  ") %>
+  <%= text_field_tag(:name) %>
+ <br>
+  <%= label_tag(:password, "Password:") %>
+  <%= password_field_tag(:password) %>
+  <br>
+  <%= submit_tag 'login'%>
+  
+  
+  <%#= button_to "Logout" , {:controller =>"users" ,:action=> "logout" },:method => 'post' %>
+<% end %>
+<h2>New User? Sign Up here </h2>
+<%= button_to "New User", new_user_path%>
+</fieldset>

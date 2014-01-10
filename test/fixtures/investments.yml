@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  month: MyString
+  amount: 1
+  total_inv: 1
+
+two:
+  month: MyString
+  amount: 1
+  total_inv: 1

@@ -1,0 +1,46 @@
+<!-- <h1>Listing investments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Month</th>
+      <th>Amount</th>
+      <th>Total inv</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @investments.each do |investment| %>
+      <tr>
+        <td><%= investment.month %></td>
+        <td><%= investment.amount %></td>
+        <td><%= investment.total_inv %></td>
+        <td><%= link_to 'Show', investment %></td>
+        <td><%= link_to 'Edit', edit_investment_path(investment) %></td>
+        <td><%= link_to 'Destroy', investment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Investment', new_investment_path %> -->
+<h2>Here are your Investment Details</h2>
+<fieldset>
+
+<p>
+  <h3><strong>Your current account balance is:</strong>
+<%= @user.total_amount %>
+</p></h3>
+
+<p>
+   <%= form_tag(:action=>'create') do %>
+   <%= label_tag(:amount, "Amount u want to invest:  ") %>
+   <%= text_field_tag(:amount) %><br>
+    <center><%= submit_tag 'Create'%></center>
+    <%end%>
+</fieldset>

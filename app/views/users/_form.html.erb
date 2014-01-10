@@ -1,0 +1,39 @@
+<%= form_for @user=User.new do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset><center>
+  <br><div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.number_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :salary %>
+    <%= f.number_field :salary %>
+  </div>
+  <div class="field">
+    <%= f.label :total_amount %>
+    <%= f.number_field :total_amount %>
+  </div>
+  <div class="dropdown">
+    <%= f.select :type, options_for_select(%w[manager lead developer]) %>
+    </div><br><br>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %></center>
+</fieldset>
