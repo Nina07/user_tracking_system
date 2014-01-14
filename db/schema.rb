@@ -17,9 +17,12 @@ ActiveRecord::Schema.define(version: 20140108115416) do
     t.string   "month"
     t.integer  "amount"
     t.integer  "total_inv"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "investments", ["user_id"], name: "index_investments_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"

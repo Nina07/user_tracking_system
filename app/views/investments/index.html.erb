@@ -29,6 +29,8 @@
 <br>
 
 <%= link_to 'New Investment', new_investment_path %> -->
+
+
 <h2>Here are your Investment Details</h2>
 <fieldset>
 
@@ -37,10 +39,15 @@
 <%= @user.total_amount %>
 </p></h3>
 
-<p>
-   <%= form_tag(:action=>'create') do %>
+<p> 
+  <p id="notice"><%= notice %></p>
+   <%= form_tag(:action=>'edit') do %>
    <%= label_tag(:amount, "Amount u want to invest:  ") %>
    <%= text_field_tag(:amount) %><br>
-    <center><%= submit_tag 'Create'%></center>
+
+    <center><%= submit_tag 'Edit amount' %></center>
+
+    <%#= button_to "Edit Amount", id: @user.id%>
+
     <%end%>
 </fieldset>

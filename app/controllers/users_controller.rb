@@ -70,7 +70,7 @@ class UsersController < ApplicationController
     
     puts "<<<<<<<<<<<<<<<<< #{params[:user][:type]}"
   end
-
+          
   def login
     
     if @user=User.find_by_name_and_password(params[:name],params[:password])

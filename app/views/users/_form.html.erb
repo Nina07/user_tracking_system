@@ -1,17 +1,18 @@
-<%= form_for @user=User.new do |f| %>
-  <% if @user.errors.any? %>
+<%= form_for @manger=User.new do |f| %>
+  <% if @manager.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%= pluralize(@manager.errors.count, "error") %> prohibited this user from being saved:</h2>
 
       <ul>
-      <% @user.errors.full_messages.each do |msg| %>
+      <% @manager.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
-
-  <fieldset><center>
+  <%#= @user.error %>
+ 
+   <fieldset><center>
   <br><div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>

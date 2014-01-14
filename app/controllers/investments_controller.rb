@@ -6,6 +6,7 @@ class InvestmentsController < ApplicationController
   def index
     @investments = Investment.all
     @user=User.find(session[:user_id])
+    #puts "this is id #{@user.id}"
   end
 
   # GET /investments/1
@@ -20,12 +21,38 @@ class InvestmentsController < ApplicationController
 
   # GET /investments/1/edit
   def edit
-  end
+    #puts "id is #{@user.id}"
+    puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+    @user=User.find(session[:user_id])
+    #raise params.inspect
+    puts "id is #{@user.id}"
+    #@investment=@user.investments.find()
+    @investment=Investment.last
+    #@investment=@inv.id
+    puts "this is #{@investment.id}"
+    @edit=params[:amount]
+    @investment.update(:amount=>params[:amount])
+    total_inv= 0
+    if @edit!='nil'
+        @investment.total_inv = @investment.total_inv + @edit.to_i
+        @user.total_amount= @user.total_amount - @edit.to_i
+        puts "#this is edit #{@edit.to_i}"
+        puts " this is #{@investment.total_inv}"
+        #Investment.update(@investment.total_inv)   
+        @investment.update(:total_inv=>@investment.total_inv)
+        @user.update(:total_amount=>@user.total_amount)
+        @month=Time.now.month
+        @investment.update(:month=>@month)
+    end
+     # @investment.update(:total_inv = '@investment.total_inv')
+     puts "this is type of edit #{@edit.class}"
+     
+      redirect_to investments_path, :notice=>"Your investment has been saved"
+   end
 
   # POST /investments
   # POST /investments.json
   def create
-    puts "current user #{@user.id}"
     puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
     @investment = Investment.new(amount:params[:amount])
 
@@ -67,7 +94,7 @@ class InvestmentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_investment
-      @investment = Investment.find(params[:id])
+     #@investment = Investment.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

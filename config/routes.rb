@@ -13,7 +13,7 @@ AppUits::Application.routes.draw do
 
   post 'users/login'
   
-  #get 'investments/submit'
+  post 'investments/edit'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
