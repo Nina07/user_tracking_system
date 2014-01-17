@@ -6,12 +6,30 @@ class InvestmentsController < ApplicationController
   def index
     @investments = Investment.all
     @user=User.find(session[:user_id])
+    puts "the user id is #{@user.id}"
+    @investment=@user.investments.first
+    #puts "the investment id is #{@investment.id}"
     #puts "this is id #{@user.id}"
   end
 
   # GET /investments/1
   # GET /investments/1.json
   def show
+    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+    @user=User.find(session[:user_id])
+     @investment=@user.investments.first
+    flag=Date.today.end_of_month
+
+    if @user.type=="manager" && @manager.investments.where("total_inv<?",3000) && flag==1
+      puts "Your Total Investments are less then the compulsory amount."
+    
+    elsif @user.type=="lead" && @lead.investments.where("total_inv<?",1500) && flag==1
+      puts "Your investments are less then the compulsory amount"
+
+    else @user.type=="developer" && @developer.investments.where("total_inv<?",300) && flag==1
+      puts "Your investments are less then the compulsory amount"
+    end
+
   end
 
   # GET /investments/new
@@ -25,22 +43,24 @@ class InvestmentsController < ApplicationController
     puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
     @user=User.find(session[:user_id])
     #raise params.inspect
-    puts "id is #{@user.id}"
+    puts "user id is #{@user.id}"
     #@investment=@user.investments.find()
     @investment=Investment.last
     #@investment=@inv.id
-    puts "this is #{@investment.id}"
+    puts "this is investment #{@investment.id}"
     @edit=params[:amount]
     @investment.update(:amount=>params[:amount])
     total_inv= 0
     if @edit!='nil'
+       puts " this is #{@investment.total_inv}"
         @investment.total_inv = @investment.total_inv + @edit.to_i
         @user.total_amount= @user.total_amount - @edit.to_i
         puts "#this is edit #{@edit.to_i}"
         puts " this is #{@investment.total_inv}"
-        #Investment.update(@investment.total_inv)   
+        #Investment.update(:total_inv=>@investment.total_inv)   
         @investment.update(:total_inv=>@investment.total_inv)
         @user.update(:total_amount=>@user.total_amount)
+        puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
         @month=Time.now.month
         @investment.update(:month=>@month)
     end

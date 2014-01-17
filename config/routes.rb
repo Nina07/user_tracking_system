@@ -15,6 +15,8 @@ AppUits::Application.routes.draw do
   
   post 'investments/edit'
 
+  get 'investments/show'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

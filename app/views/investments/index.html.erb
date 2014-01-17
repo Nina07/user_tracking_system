@@ -30,8 +30,8 @@
 
 <%= link_to 'New Investment', new_investment_path %> -->
 
-
-<h2>Here are your Investment Details</h2>
+<br>
+<h2>Here are your Investment Details</h2><br>
 <fieldset>
 
 <p>
@@ -45,9 +45,11 @@
    <%= label_tag(:amount, "Amount u want to invest:  ") %>
    <%= text_field_tag(:amount) %><br>
 
-    <center><%= submit_tag 'Edit amount' %></center>
-
-    <%#= button_to "Edit Amount", id: @user.id%>
+   <br>
+    <center><%= submit_tag 'Edit amount' %></center><br>
+    <center><%= submit_tag "Show current Investments",controller: "investments", action: "show", id: @investment.id %></center><br>
+    <%#= button_to "Show my current investements", investment_path, id: @investment.id %>
+    <center><%= link_to "Back", controller: "users" , action: "show" , id: @user.id %>
 
     <%end%>
 </fieldset>

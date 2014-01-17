@@ -1,3 +1,4 @@
+<br>
 <center><h2>Welcome <%= @current_user.name %></h2></center>
 <fieldset>
 	<center>
@@ -26,6 +27,13 @@
   <strong>Total amount:</strong>
   <%= @user.total_amount %>
 </p>
+<p>
+  <strong>Salary:</strong>
+  <%= @user.salary %>
+</p>
+<p>
+  <strong>Total Investment:</strong>
+  <%= @user.investments.map{|e|e.total_inv} %>
 </h2>
 <%= link_to 'Edit', edit_user_path(@user) %><br>
 <%= link_to 'Investments', investments_path , id: @user.id %><br>
